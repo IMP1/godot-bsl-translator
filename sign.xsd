@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+targetNamespace="https://bsl.bornforjoy.net"
+xmlns="https://bsl.bornforjoy.net"
+elementFormDefault="qualified">
+    
+    <xs:element name="sign" type="signdata"/>
+    <xs:complexType name="signdata">
+        <xs:all>
+            <xs:element name="phrase" type="xs:string"/>
+            <xs:element name="meaning" type="xs:string"/>
+            <xs:element name="description" type="xs:string"/>
+            <xs:element name="origin" type="sign-state"/>
+            <xs:element name="movement">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="move" type="sign-state" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+    <xs:complexType name="sign-state">
+        <xs:all>
+            <xs:element name="stance" type="stance"/>
+            <xs:element name="face" type="face"/>
+            <xs:element name="hands" type="hands"/>
+        </xs:all>
+    </xs:complexType>
+    <xs:complexType name="stance">
+    </xs:complexType>
+    <xs:complexType name="face">
+    </xs:complexType>
+    <xs:complexType name="hands">
+        <xs:sequence>
+            <xs:element name="hand" type="hand" minOccurs="1" maxOccurs="2"/> <!-- Sorry Octopuses :( -->
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="hand">
+        <xs:attribute name="side" type="hand-side" default="RIGHT"/>
+        <xs:attribute name="shape" type="hand-shape" default=""/>
+        <xs:all>
+            <xs:element name="fingers" type="fingers"/>
+            <xs:element name="orientation" type="hand-orientation"/>
+            <xs:element name="position" type="hand-position"/>
+        </xs:all>
+    </xs:complexType>
+    <xs:complexType name="fingers">
+        <xs:all>
+            <xs:element name="thumb" type="finger" />
+            <xs:element name="index" type="finger" />
+            <xs:element name="middle" type="finger" />
+            <xs:element name="ring" type="finger" />
+            <xs:element name="little" type="finger" />
+        </xs:all>
+    </xs:complexType>
+    <xs:complexType name="finger">
+        <xs:attribute name="shape" type="xs:string" default=""/>
+    </xs:complexType>
+    <xs:complexType name="hand-orientation">
+    </xs:complexType>
+    <xs:complexType name="hand-position">
+    </xs:complexType>
+
+    <!-- ENUMS -->
+    <xs:simpleType name="hand-side">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="RIGHT"/>
+            <xs:enumeration value="LEFT"/>
+        </xs:restriction>            
+    </xs:simpleType>
+    <xs:simpleType name="hand-shape">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="INHERIT"/> <!-- Keeps its previous value -->
+            <xs:enumeration value="FIST"/>    <!-- Fingers tucked into palm, thumb tucked in on top of fingers -->
+            <xs:enumeration value="FLAT"/>    <!-- Fingers and thumb all outstretched straight, touching their neighbours -->
+            <xs:enumeration value="SPREAD"/>  <!-- Fingers and thumb all oustretched straight, spread apart from each other -->
+            <xs:enumeration value="HANDLE"/>  <!-- Fingers curved round, meeting the thumb also curved round, fingers touching their neighbours -->
+            <xs:enumeration value="CLAW"/>    <!-- Fingers curved round, thumb also curved round, all spread apart from each other -->
+        </xs:restriction>            
+    </xs:simpleType>
+    
+
+</xs:schema>

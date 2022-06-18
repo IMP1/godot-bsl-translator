@@ -1,0 +1,143 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://models/hand.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://objects/Hand.gd" type="Script" id=2]
+[ext_resource path="res://models/Hand.material" type="Material" id=3]
+
+[sub_resource type="CylinderMesh" id=3]
+top_radius = 0.4
+bottom_radius = 0.3
+height = 0.4
+
+[sub_resource type="CylinderMesh" id=2]
+material = ExtResource( 3 )
+top_radius = 0.5
+bottom_radius = 0.4
+height = 1.0
+radial_segments = 16
+
+[sub_resource type="CylinderMesh" id=5]
+top_radius = 0.2
+bottom_radius = 0.2
+height = 0.5
+
+[sub_resource type="CylinderMesh" id=6]
+top_radius = 0.1
+bottom_radius = 0.15
+height = 0.5
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0.12549 )
+
+[node name="Hand" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Hand" type="Skeleton" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.25045 )
+
+[node name="Wrist" type="Spatial" parent="Hand"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2386, 0.193323, -1.28023 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Hand/Wrist"]
+transform = Transform( -0.996652, 0.0817647, 2.14443e-09, 0, -4.37114e-08, 0.6, 0.0817647, 0.996652, 2.6139e-08, -0.0865372, -0.0339094, 0.223185 )
+mesh = SubResource( 3 )
+material/0 = ExtResource( 3 )
+
+[node name="Hand" type="Spatial" parent="Hand/Wrist"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0883932, 0, 0.921212 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Hand/Wrist/Hand"]
+transform = Transform( -0.996506, 0.0835214, 2.1905e-09, 0, -4.37114e-08, 0.6, 0.0835214, 0.996506, 2.61352e-08, 0.0520437, -0.0358801, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Thumb" type="Spatial" parent="Hand/Wrist/Hand"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0590158, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Hand/Wrist/Hand/Thumb"]
+transform = Transform( -0.303847, -0.622971, 0.720822, 0.933944, -0.344235, 0.0961782, 0.188216, 0.702431, 0.686415, -0.382449, -0.0792589, -0.195388 )
+mesh = SubResource( 5 )
+material/0 = ExtResource( 3 )
+
+[node name="Knuckle1" type="Spatial" parent="Hand/Wrist/Hand/Thumb"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.422861, -0.0590158, -0.224706 )
+
+[node name="Knuckle2" type="Spatial" parent="Hand/Wrist/Hand/Thumb/Knuckle1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.227107, -0.204208, 0.250848 )
+
+[node name="Knuckle3" type="Spatial" parent="Hand/Wrist/Hand/Thumb/Knuckle1/Knuckle2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.161328, -0.190843, 0.24671 )
+
+[node name="Tip" type="Spatial" parent="Hand/Wrist/Hand/Thumb/Knuckle1/Knuckle2/Knuckle3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.110269, 0.0601822, 0.142778 )
+
+[node name="IndexFinger" type="Spatial" parent="Hand/Wrist/Hand"]
+
+[node name="Knuckle1" type="Spatial" parent="Hand/Wrist/Hand/IndexFinger"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.280047, -0.0590158, 0.394351 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Hand/Wrist/Hand/IndexFinger/Knuckle1"]
+transform = Transform( 0.97183, -0.235685, 1.03021e-08, -0.00975438, -0.0402215, -0.999143, 0.235483, 0.970997, -0.0413874, -0.0500171, 0.0266048, 0.231613 )
+mesh = SubResource( 6 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 3 )
+
+[node name="Knuckle2" type="Spatial" parent="Hand/Wrist/Hand/IndexFinger/Knuckle1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.114305, 0, 0.428643 )
+
+[node name="Knuckle3" type="Spatial" parent="Hand/Wrist/Hand/IndexFinger/Knuckle1/Knuckle2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0465663, 0, 0.289509 )
+
+[node name="Tip" type="Spatial" parent="Hand/Wrist/Hand/IndexFinger/Knuckle1/Knuckle2/Knuckle3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0404587, 0, 0.190598 )
+
+[node name="MiddleFinger" type="Spatial" parent="Hand/Wrist/Hand"]
+
+[node name="Knuckle1" type="Spatial" parent="Hand/Wrist/Hand/MiddleFinger"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0533666, -0.0590158, 0.644132 )
+
+[node name="Knuckle2" type="Spatial" parent="Hand/Wrist/Hand/MiddleFinger/Knuckle1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0193141, 0, 0.420143 )
+
+[node name="Knuckle3" type="Spatial" parent="Hand/Wrist/Hand/MiddleFinger/Knuckle1/Knuckle2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00151865, 0, 0.307097 )
+
+[node name="Tip" type="Spatial" parent="Hand/Wrist/Hand/MiddleFinger/Knuckle1/Knuckle2/Knuckle3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000687674, 0, 0.193263 )
+
+[node name="RingFinger" type="Spatial" parent="Hand/Wrist/Hand"]
+
+[node name="Knuckle1" type="Spatial" parent="Hand/Wrist/Hand/RingFinger"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.142077, -0.0590158, 0.673902 )
+
+[node name="Knuckle2" type="Spatial" parent="Hand/Wrist/Hand/RingFinger/Knuckle1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0700863, 0, 0.319431 )
+
+[node name="Knuckle3" type="Spatial" parent="Hand/Wrist/Hand/RingFinger/Knuckle1/Knuckle2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.038706, 0, 0.235279 )
+
+[node name="Tip" type="Spatial" parent="Hand/Wrist/Hand/RingFinger/Knuckle1/Knuckle2/Knuckle3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0898263, 0, 0.220923 )
+
+[node name="LittleFinger" type="Spatial" parent="Hand/Wrist/Hand"]
+
+[node name="Knuckle1" type="Spatial" parent="Hand/Wrist/Hand/LittleFinger"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.445856, -0.0590158, 0.489699 )
+
+[node name="Knuckle2" type="Spatial" parent="Hand/Wrist/Hand/LittleFinger/Knuckle1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.121523, 0, 0.29657 )
+
+[node name="Knuckle3" type="Spatial" parent="Hand/Wrist/Hand/LittleFinger/Knuckle1/Knuckle2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0501363, 0, 0.178127 )
+
+[node name="Tip" type="Spatial" parent="Hand/Wrist/Hand/LittleFinger/Knuckle1/Knuckle2/Knuckle3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0555345, 0, 0.16377 )
+
+[node name="HandMesh" type="MeshInstance" parent="Hand"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.817934, 0 )
+material_override = SubResource( 4 )
+mesh = ExtResource( 1 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 3 )
+material/1 = null

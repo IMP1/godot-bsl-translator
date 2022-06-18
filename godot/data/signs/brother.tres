@@ -1,0 +1,59 @@
+[gd_resource type="Resource" load_steps=12 format=2]
+
+[ext_resource path="res://Sign.gd" type="Script" id=1]
+[ext_resource path="res://SignState.gd" type="Script" id=2]
+[ext_resource path="res://Hand.gd" type="Script" id=3]
+[ext_resource path="res://Finger.gd" type="Script" id=4]
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 4 )
+shape = 0
+tip_position = Vector3( 0, 0, 0 )
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 3 )
+side = 0
+shape = 0
+anchor = 3
+offset = Vector3( 0, -0.5, 0 )
+orientation = Vector3( 0, 0, 0 )
+thumb = SubResource( 4 )
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 4 )
+shape = 0
+tip_position = Vector3( 0, 0, 0 )
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 3 )
+side = 1
+shape = 0
+anchor = 3
+offset = Vector3( 0, 0.5, 0 )
+orientation = Vector3( 0, 0, 0 )
+thumb = SubResource( 5 )
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 2 )
+left_hand = SubResource( 2 )
+right_hand = SubResource( 3 )
+duration = 1.0
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 2 )
+left_hand = SubResource( 2 )
+right_hand = SubResource( 3 )
+duration = 1.0
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+left_hand = SubResource( 2 )
+right_hand = SubResource( 3 )
+duration = 1.0
+
+[resource]
+script = ExtResource( 1 )
+phrase = "Brother"
+description = "Male sibling"
+origin = SubResource( 1 )
+movements = [ SubResource( 6 ), SubResource( 7 ) ]

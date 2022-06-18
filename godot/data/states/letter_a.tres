@@ -1,0 +1,33 @@
+[gd_resource type="Resource" load_steps=7 format=2]
+
+[ext_resource path="res://SignState.gd" type="Script" id=1]
+[ext_resource path="res://Hand.gd" type="Script" id=2]
+[ext_resource path="res://Finger.gd" type="Script" id=3]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+side = 0
+shape = 2
+anchor = 5
+offset = Vector3( 0, 0, 0 )
+orientation = Vector3( 0, 0, 0 )
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 3 )
+shape = 0
+tip_position = Vector3( 0, 0, 0 )
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 2 )
+side = 1
+shape = 0
+anchor = 5
+offset = Vector3( 0, 0, 0 )
+orientation = Vector3( 0, 0, 0 )
+index_finger = SubResource( 3 )
+
+[resource]
+script = ExtResource( 1 )
+left_hand = SubResource( 1 )
+right_hand = SubResource( 2 )
+duration = -1.0

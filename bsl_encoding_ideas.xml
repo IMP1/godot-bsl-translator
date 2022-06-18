@@ -1,0 +1,99 @@
+
+<!-- Available Finger Shapes
+  * STRAIGHT
+  * 
+ -->
+<sign xmlns="https://bsl.bornforjoy.net"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="https://bsl.bornforjoy.net sign.xsd">
+    <phrase>What?</phrase>
+    <meaning>Question word, something something</meaning>
+    <description></description>
+    <origin>
+        <stance></stance>
+        <face></face>
+        <hands>
+            <hand side="RIGHT" shape="FIST">
+                <orientation>
+                    <offset palm="front" thumb="left" tip="up" />
+                </orientation>
+                <position>
+                </position>
+                <fingers>
+                    <index shape="STRAIGHT" tip-orientation="up" />
+                </fingers>
+            </hand>
+        </hands>
+    </origin>
+    <movement time="1/6" interpolation="linear">
+        <hands>
+            <hand side="RIGHT">
+                <orientation>
+                    <offset tip="up" palm="-30" />
+                </orientation>
+            </hand>
+        </hands>
+    </movement>
+    <movement time="2/6" interpolation="linear">
+        <hands>
+            <hand side="RIGHT">
+                <orientation>
+                    <offset tip="up" palm="30" />
+                </orientation>
+            </hand>
+        </hands>
+    </movement>
+    <movement time="3/6" interpolation="linear">
+        <hands>
+            <hand side="RIGHT">
+                <orientation>
+                    <offset tip="up" palm="-30" />
+                </orientation>
+            </hand>
+        </hands>
+    </movement>
+</sign>
+
+<sign>
+    <phrase>Why?</phrase>
+    <meaning>Question word, something something</meaning>
+    <description></description>
+    <origin>
+        <stance></stance>
+        <face></face>
+        <hands>
+            <hand side="RIGHT" shape="FIST">
+                <orientation palm="left" thumb="back" tip="up" />
+                <position anchor-combination="average">
+                    <anchors>
+                        <anchor id="left-shoulder" />
+                        <anchor id="left-breast" />
+                    </anchors>
+                </position>
+                <fingers>
+                    <index shape="STRAIGHT" tip-orientation="up"/>
+                </fingers>
+            </hand>
+        </hands>
+    </origin>
+    <movement time="1/6" interpolation="linear">
+        <hands>
+            <hand side="RIGHT">
+                <position>
+                </position>
+            </hand>
+        </hands>
+    </movement>
+    <movement time="2/6" interpolation="linear">
+        <hands>
+            <hand side="RIGHT">
+            </hand>
+        </hands>
+    </movement>
+    <movement time="3/6" interpolation="linear">
+        <hands>
+            <hand side="RIGHT">
+            </hand>
+        </hands>
+    </movement>
+</sign>
